@@ -2,7 +2,15 @@
 
 Simple project to demonstrate strange errors with memory tests.
 
-Only Test #0 passes.
+All 3 tests do the same thing, namely, simulating writing 256 color Palette to in-memory buffer that's typical for encoding images. 
+
+But Only Test #0 passes.
+
+The other 2 fails with: 
+
+```
+memory allocation of 8388608 bytes failed
+```
 
 ## Memory Tests
 
