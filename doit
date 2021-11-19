@@ -2,6 +2,6 @@
 cargo clean
 rm sdkconfig
 cargo build --features native
-espflash /dev/ttyUSB0 target/xtensa-esp32-espidf/debug/hello-world-esp-rs
-espmonitor --chip esp32 --bin target/xtensa-esp32-espidf/debug/hello-world-esp-rs  /dev/ttyUSB0 
+espflash /dev/ttyUSB0 target/xtensa-esp32-espidf/debug/esp-rs-alloc-error
+espmonitor --chip esp32 --bin target/xtensa-esp32-espidf/debug/esp-rs-alloc-error  /dev/ttyUSB0 
 
