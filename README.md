@@ -53,6 +53,40 @@ The 3 memory test types only differ on how buffer is being written to:
                     writable_buffer.write_u8(0)?;
                 }
 ```
+## Environment
+
+* esp-idf v4.3
+* esp32-cam
+
+## Stack Trace
+
+decoded
+```
+0x400d604a: std::sys::unix::abort_internal at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/std/src/sys/unix/mod.rs:259
+0x4008747e: panic_abort at /usr/local/projects/mhuang/3rd-party/esp-rs/esp-idf-sys-build-toolchain-shared/esp-idf-v4.3/components/esp_system/panic.c:356
+0x40087c7d: esp_system_abort at /usr/local/projects/mhuang/3rd-party/esp-rs/esp-idf-sys-build-toolchain-shared/esp-idf-v4.3/components/esp_system/system_api.c:112
+0x4008c94a: abort at /usr/local/projects/mhuang/3rd-party/esp-rs/esp-idf-sys-build-toolchain-shared/esp-idf-v4.3/components/newlib/abort.c:46
+0x400d604a: std::sys::unix::abort_internal at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/std/src/sys/unix/mod.rs:259
+0x400d5efa: std::process::abort at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/std/src/process.rs:1979
+0x400d5f6d: rust_oom at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/std/src/alloc.rs:330
+0x400de2a2: __rg_oom at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/alloc.rs:398
+0x400de08a: alloc::alloc::handle_alloc_error at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/alloc.rs:367
+0x400ddce0: alloc::raw_vec::handle_reserve at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/raw_vec.rs:531
+0x400ddce0: alloc::raw_vec::RawVec::reserve::do_reserve_and_handle at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/raw_vec.rs:334
+0x400de0f0: alloc::raw_vec::RawVec::reserve at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/raw_vec.rs:338
+0x400de0f0: alloc::vec::Vec::reserve at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:805
+0x400de0f0: alloc::vec::Vec::append_elements at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:1736
+0x400de0f0: as alloc::vec::spec_extend::SpecExtend<&T,core::slice::iter::Iter>>::spec_extend at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/vec/spec_extend.rs:85
+0x400de15c: alloc::vec::Vec::extend_from_slice at /home/mhuang/.rustup/toolchains/esp/lib/rustlib/src/rust/library/alloc/src/vec/mod.rs:2163
+```
+
+raw
+
+```
+abort() was called at PC 0x400d604a on core 0
+Backtrace:0x4008747e:0x3ffb5b90 0x40087c7d:0x3ffb5bb0 0x4008c94a:0x3ffb5bd0 0x400d604a:0x3ffb5c40 0x400d5efa:0x3ffb5c60 0x400d5f6d:0x3ffb5c80 0x400de2a2:0x3ffb5ca0 0x400d2772 [__rust_alloc_error_handler:??:?]:0x3ffb5cc0 0x400de08a:0x3ffb5ce0 0x400ddce0:0x3ffb5d00 0x400de0f0:0x3ffb5d30 0x400de15c:0x3ffb5d58 |<-CORRUPTED
+```
+
 
 ## Output
 
